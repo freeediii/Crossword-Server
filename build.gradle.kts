@@ -13,6 +13,11 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation(files("libs/json-20220320.jar"))
+}
+
+dependencies {
+    compileOnly("mysql:mysql-connector-java:8.0.25")
 }
 
 tasks.test {
