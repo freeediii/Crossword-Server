@@ -10,7 +10,7 @@ abstract class Server(private val port: Int){
 
     private val connections: HashMap<Pair<String, Int>, EchoThread> = HashMap()
 
-    var isRunning: Boolean = false
+    var isRunning: Boolean = true
 
     fun start(){
         try {

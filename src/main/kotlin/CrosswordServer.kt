@@ -3,7 +3,7 @@ import java.lang.NumberFormatException
 import java.util.*
 import kotlin.collections.HashMap
 
-class CrosswordServer: Server(649649) {
+class CrosswordServer: Server(42649) {
 
     private val soloGames: LinkedList<CrosswordSoloGame> = LinkedList()
     private val multiGames: LinkedList<CrosswordMultiplayerGame> = LinkedList()
@@ -15,14 +15,16 @@ class CrosswordServer: Server(649649) {
     }
 
     override fun processMessage(clientIpAddress: String, clientPort: Int, message: String) {
+        println(message)
         val json = JSONObject(message)
 
+
         when(json.getString("messageType")){
-            "GAME"->{
-                when (json.getString("ISSUE")){
+            "GAMESTART"->{
+                when (json.getString("issue")){
                     "STARTSOLO" ->{
                         try {
-                            val size: Int = (json.getString("SIZE")).toInt()
+                            val size: Int = (json.getString("size")).toInt()
 
                             val game: CrosswordSoloGame = CrosswordSoloGame(onlineMember[Pair(clientIpAddress, clientPort)]!!, size)
 
@@ -44,6 +46,7 @@ class CrosswordServer: Server(649649) {
     }
 
     override fun processNewConnection(clientIpAddress: String, clientPort: Int) {
+        println("User joined: $clientIpAddress $clientPort")
         onlineMember[Pair(clientIpAddress, clientPort)] = OnlinePlayer(this, createId(), clientIpAddress, clientPort)
     }
 
