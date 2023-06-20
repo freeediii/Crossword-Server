@@ -102,7 +102,7 @@ class EchoThread(private var socket: Socket, private var server: Server): Thread
                         byteArrayOf(198.toByte(), 131.toByte(), 130.toByte(), 182.toByte(), 194.toByte(), 135.toByte())
                     val key = byteArrayOf(167.toByte(), 225.toByte(), 225.toByte(), 210.toByte())
                     for (i in encoded.indices) {
-                        decoded[i] = (encoded[i]  key[i and 0x3]).toByte()
+                        decoded[i] = (encoded[i]).toByte()
                     }
 
                     this.server.processMessage(this.socket.inetAddress.toString(), this.socket.port, content)
