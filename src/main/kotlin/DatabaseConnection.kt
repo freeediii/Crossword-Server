@@ -5,7 +5,7 @@ import java.sql.Statement
 import java.util.*
 
 private var connection: Connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/crossword?user=master&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useUnicode=yes")
-private var statement: Statement = connection.createStatement()//&password=soestistdoof69dieniederlande
+private var statement: Statement = connection.createStatement()
 
 
 fun getRandomQuestion(): Pair<String, String>?{

@@ -1,6 +1,9 @@
 import org.json.JSONObject
 import java.lang.NumberFormatException
+import java.security.MessageDigest
 import java.util.*
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 import kotlin.collections.HashMap
 
 class CrosswordServer: Server(42649) {
